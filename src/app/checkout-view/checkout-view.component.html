@@ -1,0 +1,95 @@
+<app-navigation-top></app-navigation-top>
+
+<div class="jumbotron jumbotron-fluid"
+     style="background-image: url('../../assets/background.jpg');background-position: center;background-size: cover;
+     background-repeat: no-repeat;color: white">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-2 col-4">
+                <img src="../../assets/imi-logo.png" class="img-responsive" width="100%" (click)="goToInto()">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+
+        <div class="col-sm-4 col-12">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Warenkorb</span>
+                <span class="badge badge-secondary badge-pill">{{items.length}}</span>
+            </h4>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let i of items; let in = index">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1">{{i.brand}}</h6>
+                        <small class="text-muted">{{i.price}} €</small>
+                    </div>
+                    <small class="mb-1">{{i.description}}</small><br>
+                    <small class="mb-1">{{i.sizes}}</small>
+                    <p class="mb-1 float-right" style="color: indianred;font-size: 14px"
+                       (click)="removeItemFromOrder(in)">Entfernen</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-12">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Versand</span>
+            </h4>
+            <form>
+                <div class="form-group">
+                    <label for="inputAddress">Name</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Max Mustermann" name="test"
+                           [(ngModel)]="order.orderName">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">E-Mail</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Ihre E-Mail-Adresse" name="test"
+                           [(ngModel)]="order.orderMail">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Adresse</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Landstraße 4"
+                           name="test" [(ngModel)]="order.orderAdress">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="inputCity">Ort</label>
+                        <input type="text" class="form-control" id="inputCity"name="test"
+                               [(ngModel)]="order.orderTown" placeholder="Marxzell">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputZip">PLZ</label>
+                        <input type="text" class="form-control" id="inputZip"name="test"
+                               [(ngModel)]="order.orderPLZ" placeholder="76359">
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary"
+                        style="background-color: darkgoldenrod;border: solid white 0px;
+                        border-radius: 0px"
+                        [disabled]="
+                        order.orderMail == null ||
+                        order.orderName == null ||
+                        order.orderAdress == null ||
+                        order.orderTown == null ||
+                        order.orderPLZ == null ||
+                        order.items.length == 0"
+                        (click)="sendOrder()"
+                        *ngIf="orderInProgress == false">Bestellung abgeben</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="container" *ngIf="orderInProgress == true">
+    <div class="row justify-content-center">
+        <div class="col-6 text-center">
+            <div class="spinner-border" role="status" style="color: darkgoldenrod">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>

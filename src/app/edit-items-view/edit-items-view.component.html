@@ -1,0 +1,139 @@
+<section style="background-color: ghostwhite; min-height: 100vh">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-2 d-sm-block d-none">
+                            <app-side-navigation></app-side-navigation>
+                        </div>
+                        <div class="col-10">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+
+                                    </div>
+                                </div>
+                                <div class="jumbotron jumbotron-fluid" style="background-color: transparent;padding-bottom: 10px">
+                                    <div class="container">
+                                        <h1 class="display-5">Herzlich Willkommen</h1>
+                                        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <a class="nav-link active"
+                                                   style="color: darkgoldenrod;font-size: 20px"
+                                                   (click)="sortItemsByGender('woman')"
+                                                   id="genderNavWoman">Damen</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link"
+                                                   style="color: darkgrey;font-size: 20px"
+                                                   (click)="sortItemsByGender('man')"
+                                                   id="genderNavMan">Herren</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <a class="nav-link active"
+                                                   style="color: darkgoldenrod;font-size: 15px"
+                                                   (click)="sortItemsByType('all')"
+                                                   id="typeNavAll">Alles</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link active"
+                                                   style="color: darkgrey;font-size: 15px"
+                                                   (click)="sortItemsByType('tops')"
+                                                   id="typeNavTops">Oberteile</a>
+                                            </li>
+                                            <li class="nav-item" *ngIf="this.currentGender == 'woman'">
+                                                <a class="nav-link active"
+                                                   style="color: darkgrey;font-size: 15px"
+                                                   (click)="sortItemsByType('dress')"
+                                                   id="typeNavDress">Kleider</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link"
+                                                   style="color: darkgrey;font-size: 15px"
+                                                   (click)="sortItemsByType('jackets')"
+                                                   id="typeNavJackets">Jacken & Mäntel</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link"
+                                                   style="color: darkgrey;font-size: 15px"
+                                                   (click)="sortItemsByType('pants')"
+                                                   id="typeNavPants">Jeans & Hosen</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link"
+                                                   style="color: darkgrey;font-size: 15px"
+                                                   (click)="sortItemsByType('shoes')"
+                                                   id="typeNavShoes">Schuhe</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card" *ngFor="let c of currentClothing" style="margin-top: 10px">
+                                <div class="card-body">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-4 col-md-2 col-12">
+                                                <img class="img-responsive" width="100%"
+                                                     src="http://www.imi-mode.besmnt.de/itemImages/{{c.id}}.png" alt="Card image cap">
+                                            </div>
+                                            <div class="col-sm-8 col-md-10 col-12">
+                                                <h5 class="card-title">{{c.brand}}</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">{{c.description}}</h6>
+                                                <form *ngIf="c.deleted === undefined || c.deleted === null">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="">Verfügbare Größen</label>
+                                                            <input type="email" class="form-control" id="updateInputSizes{{c.id}}" placeholder="{{c.sizes}}" >
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="">Aktueller Preis</label>
+                                                            <input type="password" class="form-control" id="updateInputPrice{{c.id}}" placeholder="{{c.price}}" >
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-primary float-right" (click)="updateItem(c.id)"
+                                                            style="background-color: darkgoldenrod; border-radius: 0px;border-color: transparent">Updaten
+                                                    </button>
+                                                </form>
+                                                <form *ngIf="c.deleted === undefined || c.deleted === null">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlFile1">Bild des Objekts</label>
+                                                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="file"
+                                                               (change)="addItem($event, c.id)">
+                                                    </div>
+                                                </form>
+                                                <form>
+                                                    <a (click)="deleteItem(c.id)" *ngIf="c.deleted === undefined || c.deleted === null" style="color: dodgerblue">Objekt löschen</a>
+                                                    <a (click)="reactivateItem(c.id)" *ngIf="c.deleted !== undefined && c.deleted !== null" style="color: dodgerblue">Objekt wiederherstellen</a>
+                                                </form>
+                                                <!--<a href="#" class="card-link">Objekt updaten</a>
+                                                <a href="#" class="card-link">Objekt löschen</a>-->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

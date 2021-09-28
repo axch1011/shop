@@ -1,0 +1,75 @@
+<section style="background-color: ghostwhite; min-height: 100vh">
+<app-navigation-top></app-navigation-top>
+
+<div class="jumbotron jumbotron-fluid"
+     style="background-image: url('../../assets/background.jpg');background-position: center;background-size: cover;
+     background-repeat: no-repeat;color: white">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-1 col-2">
+                <img src="../../assets/imi-logo.png" class="img-responsive" width="100%">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-3 d-sm-block d-none">
+                       <app-side-navigation></app-side-navigation>
+                    </div>
+                    <div class="col-9" style="background-color: white;">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nummer</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Datum</th>
+                                <th scope="col">Kunde</th>
+                                <th scope="col">Ort</th>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            <tr *ngFor="let o of showOrders"
+                                routerLink="/order/{{o.id}}">
+                                <td style="color: cornflowerblue">{{o.id.substring(0, 8)}}</td>
+                                <td>
+                                    <span class="badge badge-primary badge-pill" *ngIf="o.orderState === 'new'"
+                                          style="font-weight: 300;text-transform: uppercase;">
+                                        {{o.orderState}}
+                                        </span>
+                                    <span class="badge badge-primary badge-pill"
+                                          *ngIf="o.orderState === 'in Bearbeitung'"
+                                          style="font-weight: 300;text-transform: uppercase;
+                                              background-color: mediumpurple">
+                                        {{o.orderState}}
+                                        </span>
+                                    <span class="badge badge-primary badge-pill"
+                                          *ngIf="o.orderState === 'Versandt'"
+                                          style="font-weight: 300;text-transform: uppercase;
+                                              background-color: coral">
+                                        {{o.orderState}}
+                                        </span>
+                                    <span class="badge badge-primary badge-pill"
+                                          *ngIf="o.orderState === 'Abgeschlossen'"
+                                          style="font-weight: 300;text-transform: uppercase;
+                                              background-color: darkseagreen">
+                                        {{o.orderState}}
+                                        </span>
+                                </td>
+                                <td>{{o.orderCreation.toDate() | date: 'mediumDate'}}</td>
+                                <td><i class="fas fa-male"></i> {{o.orderName}}</td>
+                                <td>{{o.orderTown}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>

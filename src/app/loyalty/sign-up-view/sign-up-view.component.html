@@ -1,0 +1,96 @@
+<section style="background-color: whitesmoke;height: 100%;min-height: 100vh;">
+    <!--<app-navigation-top></app-navigation-top>-->
+    <div class="container-fluid" style="min-height: 100vh">
+        <div class="row" style="height: 100vh">
+            <div class="col-sm-8 col-12"
+                 style="background-image: url('../../../assets/back2.png');background-size: cover;background-repeat: no-repeat;
+                 background-color: black">
+                <div class="container" style="color: white">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <img class="my-3" src="../../../assets/imi-logo.png" width="150px">
+                            <h3 style="color: darkgoldenrod" class="py-3">KUNDENKARTE</h3>
+                            <hr>
+                            <div class="row" style="display: none">
+                                <div class="col-sm-4 col-12 text-center py-3">
+                                    <i class="fas fa-shopping-bag" style="font-size: 40px;color: darkgoldenrod;padding-bottom: 20px"></i>
+                                    <h5>Lorem Ipsum<br>alla medusa de Santorino.</h5>
+                                    <p style="color: darkgrey">Lorem Ipsum alla medusa de Santorino. Nada Problema e consulta de Farao. Leta de saria!</p>
+                                </div>
+                                <div class="col-sm-4 col-12 text-center py-3">
+                                    <i class="fas fa-dolly" style="font-size: 40px;color: darkgoldenrod;padding-bottom: 20px"></i>
+                                    <h5>Lorem Ipsum<br>alla medusa de Santorino.</h5>
+                                    <p style="color: darkgrey">Lorem Ipsum alla medusa de Santorino. Nada Problema e consulta de Farao. Leta de saria!</p>
+                                </div>
+                                <div class="col-sm-4 col-12 text-center py-3">
+                                    <i class="fas fa-cash-register" style="font-size: 40px;color: darkgoldenrod;;padding-bottom: 20px"></i>
+                                    <h5>Lorem Ipsum<br>alla medusa de Santorino.</h5>
+                                    <p style="color: darkgrey">Lorem Ipsum alla medusa de Santorino. Nada Problema e consulta de Farao. Leta de saria!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-12">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <h4 class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="text-muted" style="color: darkgoldenrod !important;">Kundenkarte beantragen</span>
+                            </h4>
+                            <form *ngIf="firstStepCheck === false" [formGroup]="customerData1">
+                                <small style="float: right">1 von 2</small>
+                                <div class="form-group">
+                                    <label for="inputAddress">Anrede</label>
+                                    <select class="form-control" id="typeInput" rows="2"
+                                            formControlName="salutation">
+                                        <option ngValue="Herr">Herr</option>
+                                        <option ngValue="Frau">Frau</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">Name</label>
+                                    <input type="text" class="form-control" id="inputAddress"
+                                           placeholder="Max Mustermann" formControlName="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">E-Mail</label>
+                                    <input type="text" class="form-control" id="inputAddress"
+                                           placeholder="Ihre E-Mail-Adresse" formControlName="mail">
+                                </div>
+                                <button type="button" class="btn btn-primary float-right"
+                                        style="background-color: darkgoldenrod;border: solid white 0px;
+                                        border-radius: 0px" (click)="stepForward()"
+                                        [disabled]="!customerData1.valid">Weiter</button>
+                            </form>
+                            <form *ngIf="firstStepCheck === true" [formGroup]="customerData2">
+                                <small style="float: right">2 von 2</small>
+                                <div class="form-group">
+                                    <label for="inputAddress">Wohnort</label><small> (optional)</small>
+                                    <input type="text" class="form-control" id="inputAddress"
+                                           placeholder="Reichenbach" formControlName="town">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">Telefon</label><small> (optional)</small>
+                                    <input type="text" class="form-control" id="inputAddress"
+                                           placeholder="015789636978" formControlName="phoneNumber">
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">Geburtstag</label><small> (optional)</small>
+                                    <input type="text" class="form-control" id="inputAddress"
+                                           placeholder="19.02." formControlName="birthday">
+                                    <small>Lassen Sie sich von uns beschenken!</small>
+                                </div>
+                                <button type="button" class="btn btn-primary float-right"
+                                        style="background-color: darkgoldenrod;border: solid white 0px;
+                                        border-radius: 0px" (click)="createCustomer()">Absenden</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

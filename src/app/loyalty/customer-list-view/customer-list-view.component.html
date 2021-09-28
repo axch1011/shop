@@ -1,0 +1,59 @@
+<section style="background-color: ghostwhite; min-height: 100vh">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-2 d-sm-block d-none">
+                            <app-side-navigation></app-side-navigation>
+                        </div>
+                        <div class="col-10">
+                            <div class="container-fluid">
+                                <div class="jumbotron jumbotron-fluid" style="background-color: transparent;padding-bottom: 10px">
+                                    <div class="container">
+                                        <h1 class="display-5">Herzlich Willkommen</h1>
+                                        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4>Kunden</h4>
+                                        <table class="table table-hover table-striped" *ngIf="customers !== undefined">
+                                            <thead>
+                                            <tr style="color: grey">
+                                                <th scope="col">Kunden-Nr.</th>
+                                                <th scope="col">Kunde</th>
+                                                <th scope="col">Umsatz</th>
+                                                <th scope="col">Letzer Kauf</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody >
+                                            <tr *ngFor="let c of customers" routerLink="/customer/{{c.id}}">
+                                                <td style="color: cornflowerblue">{{c.customerNumber}}</td>
+                                                <td>{{c.name}}</td>
+                                                <td>
+                                                    <span class="badge badge-primary badge-pill"
+                                                          style="font-weight: 300;text-transform: uppercase;background-color: darkgrey">
+                                                        Bald Verfügbar
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-primary badge-pill"
+                                                          style="font-weight: 300;text-transform: uppercase;background-color: darkgrey">
+                                                        Bald Verfügbar
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

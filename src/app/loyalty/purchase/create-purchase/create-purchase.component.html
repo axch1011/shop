@@ -1,0 +1,206 @@
+<section style="background-color: ghostwhite; min-height: 100vh">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-2 d-sm-block d-none">
+                            <app-side-navigation></app-side-navigation>
+                        </div>
+                        <div class="col-10">
+                            <div class="container-fluid">
+                                <div class="jumbotron jumbotron-fluid" style="background-color: transparent;padding-bottom: 10px">
+                                    <div class="container">
+                                        <h1 class="display-5">Herzlich Willkommen</h1>
+                                        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h5 style="color: darkgoldenrod;font-size: 20px;font-weight: 300">Heutige Verkaufszahlen</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="card shadow p-1 mb-1 bg-white" style="border: solid white 0px;border-bottom: solid darkgoldenrod 4px">
+                                            <div class="card-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-2">
+                                                            <div style="height: 100%;display: flex;align-items: center">
+                                                                <i class="fas fa-cash-register" style="color: darkgoldenrod;font-size: 25px"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-10">
+                                                            <h5 class="card-title" style="font-size: 28px; color: grey;font-weight: 300">0 €</h5>
+                                                            <h6 class="card-subtitle mb-2 text-muted" style="font-size: 12px;font-weight: 300">Umsatz </h6>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="card shadow p-1 mb-1 bg-white" style="border: solid white 0px;border-bottom: solid darkgoldenrod 4px">
+                                            <div class="card-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-2">
+                                                            <div style="height: 100%;display: flex;align-items: center">
+                                                                <i class="fas fa-shopping-bag" style="color: darkgoldenrod;font-size: 25px"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-10">
+                                                            <h5 class="card-title" style="font-size: 28px; color: grey;font-weight: 300">0</h5>
+                                                            <h6 class="card-subtitle mb-2 text-muted" style="font-size: 12px;font-weight: 300">Einkäufe</h6>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="card shadow p-1 mb-1 bg-white" style="border: solid white 0px;border-bottom: solid darkgoldenrod 4px">
+                                            <div class="card-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-2">
+                                                            <div style="height: 100%;display: flex;align-items: center">
+                                                                <i class="fas fa-wallet" style="color: darkgoldenrod;font-size: 25px"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-10">
+                                                            <h5 class="card-title" style="font-size: 28px; color: grey;font-weight: 300">0 €</h5>
+                                                            <h6 class="card-subtitle mb-2 text-muted" style="font-size: 12px;font-weight: 300">ø Einkaufswert</h6>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center py-3">
+                                    <div class="col-12">
+                                        <h4>Kauf anlegen</h4>
+                                        <form>
+                                            <div class="form-row">
+                                                <!--<div class="col-md-4 mb-3">
+                                                    <label for="exampleFormControlInput1">Kundennummer</label>
+                                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="1111"
+                                                           name="marke" disabled>-->
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="exampleFormControlInput1">Kunden-Nummber</label>
+                                                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="4"
+                                                           name="marke" [(ngModel)]="customerNumber">
+                                                    <small>Unbekannter Kunde: 1111</small>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="exampleFormControlInput1">Kunde</label>
+                                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Max Mustermann"
+                                                           name="marke" [(ngModel)]="customerName">
+                                                    <small>Optional, nicht nötig bei Kundernummer</small>
+                                                </div>
+                                                <div class="col-md-4 mb-4">
+                                                    <label for="exampleFormControlInput1">Kaufdatum</label>
+                                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                                           placeholder="02.02.2002"name="marke" [(ngModel)]="purchaseDate"
+                                                           [ngClass]="{'is-valid' : this.purchaseDate !== '',
+                                                            'is-invalid' : this.purchaseDate === '' || this.purchaseDate.length !== 10}">
+                                                    <small>Bitte Format beachten! (DD.MM.YYYY)</small>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="exampleFormControlInput1">Preis</label>
+                                                    <input type="text" class="form-control" id="completePriceInput"
+                                                           placeholder="300"name="marke" [(ngModel)]="purchasePrice">
+                                                </div>
+                                            </div>
+                                            <small style="color: darkorange"
+                                                   *ngIf="purchasePrice === undefined">Bitte geben Sie den Preis ein um fortzufahren!</small>
+                                            <hr *ngIf="purchasePrice !== undefined">
+                                            <div *ngIf="purchasePrice !== undefined">
+                                            <h6>Kleidungsstücke</h6>
+                                            <div class="form-row" *ngFor="let i of itemNumber;let in = index" >
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="exampleFormControlInput1">Marke</label>
+                                                    <input type="text" class="form-control is-invalid" id="brandInput{{in}}" placeholder="Replay"
+                                                           name="marke"
+                                                           (change)="updateRowCheck(in,0)"
+                                                           [ngClass]="{'is-valid' : this.rowCheck[in][0] === true,
+                                                            'is-invalid' : this.rowCheck[in][0] === false}">
+                                                </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="exampleFormControlInput1">Produkt</label>
+                                                    <select class="form-control" id="typeInput{{in}}" rows="2"
+                                                            name="marke" >
+                                                        <option ngValue="tops">T-Shirt</option>
+                                                        <option ngValue="tops">Polo</option>
+                                                        <option ngValue="tops">Hemd</option>
+                                                        <option ngValue="tops">Bluse</option>
+                                                        <option ngValue="dress">Kleid</option>
+                                                        <option ngValue="dress">Hoodies</option>
+                                                        <option ngValue="dress">Pullover</option>
+                                                        <option ngValue="jackets">Jacken & Mäntel</option>
+                                                        <option ngValue="pants">Jeans & Hosen</option>
+                                                        <option ngValue="shoes">Schuhe</option>
+                                                        <option ngValue="shoes">Accessoires</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2 mb-2">
+                                                    <label for="exampleFormControlInput1">Größe</label>
+                                                    <input type="text" class="form-control" id="sizeInput{{in}}"
+                                                           placeholder="S"name="marke"
+                                                           (change)="updateRowCheck(in,1)"
+                                                           [ngClass]="{'is-valid' : this.rowCheck[in][1] === true,
+                                                            'is-invalid' : this.rowCheck[in][1] === false}">
+                                                    <small>Optional</small>
+                                                </div>
+                                                <div class="col-md-2 mb-2">
+                                                    <label for="exampleFormControlInput1">Preis</label>
+                                                    <input type="text" class="form-control" id="priceInput{{in}}"
+                                                           placeholder="90"name="marke"
+                                                           (change)="updateRowCheck(in,2)"
+                                                           [ngClass]="{'is-valid' : this.rowCheck[in][2] === true,
+                                                            'is-invalid' : this.rowCheck[in][2] === false}">
+                                                </div>
+                                                <div class="col-md-2 mb-2">
+                                                    <label for="exampleFormControlInput1">Geschlecht</label>
+                                                    <select class="form-control" id="genderInput{{in}}" rows="2"
+                                                            name="marke">
+                                                        <option ngValue="man">Mann</option>
+                                                        <option ngValue="woman">Frau</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <button class="btn btn-primary"
+                                                        style="border-radius: 0px; border: solid white 0px;
+                                                        background-color: darkgrey;border-radius: 20px"
+                                                        (click)="addItem()">+</button>
+                                            </div>
+                                            </div>
+                                            <!--<div class="form-group">
+                                                <label for="exampleFormControlFile1">Bild des Objekts</label>
+                                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="file"
+                                                       (change)="addItem($event)" [(ngModel)]="file">
+                                            </div>-->
+                                            <button type="button" class="btn btn-primary"
+                                                    style="border-radius: 0px; border: solid white 0px; background-color: darkgoldenrod"
+                                                    *ngIf="purchasePrice !== undefined"
+                                                    (click)="createPurchase()">
+                                                    <!--(click)="addItemToDatabase()" *ngIf="transferReady"-->Anlegen</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

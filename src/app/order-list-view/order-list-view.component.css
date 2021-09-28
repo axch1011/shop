@@ -1,0 +1,12 @@
+th {
+    border: solid white 0px !important;
+    color: darkgrey;
+    font-weight: 300;
+}
+td {
+    border: solid white 0px !important;
+}
+.table {
+    border-collapse: separate;
+    border-spacing:0 15px;
+}

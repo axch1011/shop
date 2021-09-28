@@ -1,0 +1,61 @@
+<section style="background-color: ghostwhite; min-height: 100vh">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-2 d-sm-block d-none">
+                            <app-side-navigation></app-side-navigation>
+                        </div>
+                        <div class="col-10">
+                            <div class="container-fluid">
+                                <div class="jumbotron jumbotron-fluid" style="background-color: transparent;padding-bottom: 10px">
+                                    <div class="container">
+                                        <h1 class="display-5">Herzlich Willkommen</h1>
+                                        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4>Marken</h4>
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col-6">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" placeholder="Name der Marke"
+                                                               [(ngModel)]="this.newBrand" name="brand">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary" type="button"
+                                                                    (click)="createBrand()">Hinzufügen</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <table class="table table-hover table-striped">
+                                            <thead>
+                                            <tr style="color: grey">
+                                                <th scope="col">Marke</th>
+                                                <th scope="col">Umsatz</th>
+                                                <th scope="col">Löschen</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody >
+                                            <tr *ngFor="let b of brands">
+                                                <td>{{b}}</td>
+                                                <td>3.000 €</td>
+                                                <td style="color: red"><i class="fas fa-trash-alt"></i></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
